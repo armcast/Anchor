@@ -19,6 +19,7 @@ public class AnchorView: UIView {
     
     public var parentView: UIView?
     public var contentView = UIScrollView()
+    
     private var anchorPosition: AnchorPosition = .closed
     public var animationSpeed: Double = 0.2
     
@@ -62,6 +63,19 @@ public class AnchorView: UIView {
 }
 
 extension AnchorView {
+    public func open() {
+        animateTo(.minimized)
+    }
+    
+    public func close() {
+        animateTo(.closed) {
+            self.heightContraint.isActive = false
+            self.removeFromSuperview()
+        }
+    }
+}
+
+extension AnchorView {
     private func animateTo(_ position: AnchorPosition, completion: (() -> Void)? = nil) {
         anchorPosition = position
         
@@ -76,38 +90,20 @@ extension AnchorView {
         })
     }
     
-    public func open() {
-        animateTo(.minimized)
-    }
-    
-    public func close() {
-        animateTo(.closed) {
-            self.heightContraint.isActive = false
-            self.removeFromSuperview()
+    private func animateToClosestAnchorPoint(for height: CGFloat) {
+        let distToMin = abs(AnchorPosition.minimized.rawValue * (parentView?.frame.height ?? 0) - height)
+        let distToMax = abs(AnchorPosition.maximized.rawValue * (parentView?.frame.height ?? 0) - height)
+        
+        if distToMin < distToMax {
+            animateTo(.minimized)
+        } else {
+            animateTo(.maximized)
         }
     }
 }
 
-extension AnchorView: UIGestureRecognizerDelegate {
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
-}
-
 extension AnchorView {
-    enum AnchorPosition: CGFloat {
-        case minimized = 0.25, maximized = 0.90, closed = 0
-    }
-}
-
-extension AnchorView {
-    @objc func handleOutsideTap() {
-        close()
-    }
-}
-
-extension AnchorView {
-    @objc func handlePan(recognizer: UIPanGestureRecognizer) {
+    @objc private func handlePan(recognizer: UIPanGestureRecognizer) {
         let translation = recognizer.translation(in: contentView)
         let newHeight = heightContraint.constant - translation.y
         
@@ -136,15 +132,22 @@ extension AnchorView {
             break
         }
     }
-    
-    func animateToClosestAnchorPoint(for height: CGFloat) {
-        let distToMin = abs(AnchorPosition.minimized.rawValue * (parentView?.frame.height ?? 0) - height)
-        let distToMax = abs(AnchorPosition.maximized.rawValue * (parentView?.frame.height ?? 0) - height)
-        
-        if distToMin < distToMax {
-            animateTo(.minimized)
-        } else {
-            animateTo(.maximized)
-        }
+}
+
+extension AnchorView: UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+}
+
+extension AnchorView {
+    enum AnchorPosition: CGFloat {
+        case minimized = 0.25, maximized = 0.90, closed = 0
+    }
+}
+
+extension AnchorView {
+    @objc func handleOutsideTap() {
+        close()
     }
 }
