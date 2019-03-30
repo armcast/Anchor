@@ -121,7 +121,7 @@ extension AnchorView {
             }
             
             // Swiping Down
-            if translation.y > 0 && anchorPosition == .maximized && !contentViewIsAtTop {
+            if translation.y > 0 && anchorPosition == .maximized && contentViewIsAtTop {
                 heightContraint.constant = newHeight
             }
             
