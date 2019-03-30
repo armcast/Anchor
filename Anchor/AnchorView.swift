@@ -95,11 +95,18 @@ extension AnchorView {
     private func animateToClosestAnchorPoint(for height: CGFloat) {
         let distToMin = abs(AnchorPosition.minimized.rawValue * (parentView?.frame.height ?? 0) - height)
         let distToMax = abs(AnchorPosition.maximized.rawValue * (parentView?.frame.height ?? 0) - height)
+        let distToClose = abs(AnchorPosition.closed.rawValue * (parentView?.frame.height ?? 0) - height)
         
-        if distToMin < distToMax {
+        if distToMin < distToMax && distToMin < distToClose {
             animateTo(.minimized)
-        } else {
+        } else if distToMax < distToMin && distToMax < distToClose {
             animateTo(.maximized)
+        } else if distToClose < distToMax && distToClose < distToMin {
+            if anchorPosition == .maximized {
+                animateTo(.minimized)
+            } else {
+                close()
+            }
         }
     }
 }
@@ -119,14 +126,18 @@ extension AnchorView {
             }
             
             // Swiping Down
-            if translation.y > 0 && anchorPosition == .maximized && contentViewIsAtTop {
+            if translation.y > 0 && contentViewIsAtTop {
                 heightContraint.constant = newHeight
             }
             
             recognizer.setTranslation(.zero, in: contentView)
             
         case .ended, .cancelled:
-            let velocityModifier = recognizer.velocity(in: contentView).y * 0.75
+            let velocity = recognizer.velocity(in: contentView)
+            let magnitude = sqrt((velocity.x * velocity.x) + (velocity.y * velocity.y))
+            let slideMultiplier = magnitude / 200
+            let velocityModifier = velocity.y * slideMultiplier * 0.1
+            
             animateToClosestAnchorPoint(for: newHeight - velocityModifier)
             
             contentView.isScrollEnabled = anchorPosition != .minimized
@@ -144,7 +155,7 @@ extension AnchorView: UIGestureRecognizerDelegate {
 
 extension AnchorView {
     enum AnchorPosition: CGFloat {
-        case minimized = 0.25, maximized = 0.90, closed = 0
+        case minimized = 0.40, maximized = 0.90, closed = 0
     }
 }
 
