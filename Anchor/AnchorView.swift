@@ -13,6 +13,7 @@ public class AnchorView: UIView {
     private var contentViewIsAtTop: Bool {
         return contentView.contentOffset.y <= 0
     }
+    private var startedAtTop: Bool = false
     private var maxHeight: CGFloat {
         return AnchorPosition.maximized.rawValue * (parentView?.frame.height ?? 0)
     }
@@ -97,11 +98,11 @@ extension AnchorView {
         let distToMax = abs(AnchorPosition.maximized.rawValue * (parentView?.frame.height ?? 0) - height)
         let distToClose = abs(AnchorPosition.closed.rawValue * (parentView?.frame.height ?? 0) - height)
         
-        if distToMin < distToMax && distToMin < distToClose {
+        if distToMin < distToMax && distToMin < distToClose && startedAtTop {
             animateTo(.minimized)
         } else if distToMax < distToMin && distToMax < distToClose {
             animateTo(.maximized)
-        } else if distToClose < distToMax && distToClose < distToMin {
+        } else if distToClose < distToMax && distToClose < distToMin && startedAtTop {
             if anchorPosition == .maximized {
                 animateTo(.minimized)
             } else {
@@ -118,8 +119,10 @@ extension AnchorView {
         
         switch recognizer.state {
         case .began:
+            startedAtTop = contentViewIsAtTop
+            
             contentView.isScrollEnabled = anchorPosition != .minimized
-            contentView.bounces = translation.y < 0 || anchorPosition != .maximized
+            contentView.bounces = translation.y < 0 || anchorPosition != .maximized || !contentViewIsAtTop
         case .changed:
             // Swiping Up
             if translation.y < 0 && anchorPosition == .minimized && newHeight <= maxHeight {
@@ -127,7 +130,7 @@ extension AnchorView {
             }
             
             // Swiping Down
-            if translation.y > 0 && contentViewIsAtTop {
+            if translation.y > 0 && contentViewIsAtTop && startedAtTop {
                 heightContraint.constant = newHeight
             }
             
@@ -142,6 +145,7 @@ extension AnchorView {
             animateToClosestAnchorPoint(for: newHeight - velocityModifier)
             
             contentView.isScrollEnabled = anchorPosition != .minimized
+            contentView.bounces = anchorPosition == .maximized
         default:
             break
         }
