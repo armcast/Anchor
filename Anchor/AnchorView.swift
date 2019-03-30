@@ -119,6 +119,7 @@ extension AnchorView {
         switch recognizer.state {
         case .began:
             contentView.isScrollEnabled = anchorPosition != .minimized
+            contentView.bounces = translation.y < 0 || anchorPosition != .maximized
         case .changed:
             // Swiping Up
             if translation.y < 0 && anchorPosition == .minimized && newHeight <= maxHeight {
