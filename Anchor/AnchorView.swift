@@ -39,6 +39,8 @@ public class AnchorView: UIView {
         contentView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         heightContraint.isActive = true
+        
+        contentView.layer.cornerRadius = 8
     }
     
     public init(contentView: UIScrollView, parentView: UIView? = nil) {
