@@ -9,9 +9,9 @@
 import UIKit
 
 public class AnchorView: UIView {
-    lazy var heightContraint = NSLayoutConstraint(item: contentView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 0.0)
+    lazy var heightContraint = NSLayoutConstraint(item: contentContainerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 0.0)
     private var contentViewIsAtTop: Bool {
-        return contentView.contentOffset.y <= 0
+        return contentScrollView.contentOffset.y <= 0
     }
     private var startedAtTop: Bool = false
     private var maxHeight: CGFloat {
@@ -19,7 +19,8 @@ public class AnchorView: UIView {
     }
     
     public var parentView: UIView?
-    public var contentView = UIScrollView()
+    private var contentContainerView = UIView()
+    public var contentScrollView = UIScrollView()
     
     private var anchorPosition: AnchorPosition = .closed
     public var animationSpeed: Double = 0.4
@@ -27,33 +28,37 @@ public class AnchorView: UIView {
     private func configureView() {
         guard let parentView = self.parentView else { return }
         
-        parentView.addSubview(self)
-        translatesAutoresizingMaskIntoConstraints = false
-        leadingAnchor.constraint(equalTo: parentView.leadingAnchor).isActive = true
-        trailingAnchor.constraint(equalTo: parentView.trailingAnchor).isActive = true
-        topAnchor.constraint(equalTo: parentView.topAnchor).isActive = true
-        bottomAnchor.constraint(equalTo: parentView.bottomAnchor).isActive = true
-        
-        addSubview(contentView)
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        contentView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        pin([.bottom, .leading, .trailing], to: parentView)
         heightContraint.isActive = true
         
-        contentView.layer.cornerRadius = 8
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = .zero
+        layer.shadowOpacity = 0.75
+        layer.shadowRadius = 4
+        
+        contentContainerView.layer.cornerRadius = 8
+        contentContainerView.clipsToBounds = true
+        contentContainerView.layer.borderColor = UIColor.black.cgColor
+        contentContainerView.layer.borderWidth = 0.5
+        
+        contentContainerView.pin(to: self)
+        contentScrollView.pin(to: contentContainerView)
+        
+        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+        blurView.pin(to: contentContainerView, at: 0)
     }
     
     public init(contentView: UIScrollView, parentView: UIView? = nil) {
         super.init(frame: .zero)
         
-        self.contentView = contentView
+        self.contentScrollView = contentView
         self.parentView = parentView ?? UIApplication.shared.keyWindow
         
         configureView()
         
         let outsideTap = UITapGestureRecognizer(target: self, action: #selector(handleOutsideTap))
-        addGestureRecognizer(outsideTap)
+        parentView?.addGestureRecognizer(outsideTap)
+        parentView?.isUserInteractionEnabled = true
         
         let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan(recognizer:)))
         pan.delegate = self
@@ -83,13 +88,13 @@ extension AnchorView {
         anchorPosition = position
         let animationSpeed: Double = animationSpeed ?? self.animationSpeed
         
-        layoutIfNeeded()
+        self.parentView?.layoutIfNeeded()
         
         let height = (parentView?.frame.height ?? 0) * position.rawValue
         self.heightContraint.constant = height
         
         UIView.animate(withDuration: animationSpeed, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: [.allowUserInteraction], animations: {
-            self.layoutIfNeeded()
+            self.parentView?.layoutIfNeeded()
         }, completion: { _ in
             completion?()
         })
@@ -116,15 +121,15 @@ extension AnchorView {
 
 extension AnchorView {
     @objc private func handlePan(recognizer: UIPanGestureRecognizer) {
-        let translation = recognizer.translation(in: contentView)
+        let translation = recognizer.translation(in: contentScrollView)
         let newHeight = heightContraint.constant - translation.y
         
         switch recognizer.state {
         case .began:
             startedAtTop = contentViewIsAtTop
             
-            contentView.isScrollEnabled = anchorPosition != .minimized
-            contentView.bounces = translation.y < 0 || anchorPosition != .maximized || !contentViewIsAtTop
+            contentScrollView.isScrollEnabled = anchorPosition != .minimized
+            contentScrollView.bounces = translation.y < 0 || anchorPosition != .maximized || !contentViewIsAtTop
         case .changed:
             // Swiping Up
             if translation.y < 0 && anchorPosition == .minimized && newHeight <= maxHeight {
@@ -136,10 +141,10 @@ extension AnchorView {
                 heightContraint.constant = newHeight
             }
             
-            recognizer.setTranslation(.zero, in: contentView)
+            recognizer.setTranslation(.zero, in: contentScrollView)
             
         case .ended, .cancelled:
-            let velocity = recognizer.velocity(in: contentView)
+            let velocity = recognizer.velocity(in: contentScrollView)
             // Range is between 2200 and 8000
             let velocityY: CGFloat = {
                 if velocity.y > 0 {
@@ -158,8 +163,8 @@ extension AnchorView {
             let velocityMultiplier = Double(abs(velocityY))
             animateToClosestAnchorPoint(for: newHeight - velocityModifier, velocityMultiplier: velocityMultiplier)
             
-            contentView.isScrollEnabled = anchorPosition != .minimized
-            contentView.bounces = anchorPosition == .maximized
+            contentScrollView.isScrollEnabled = anchorPosition != .minimized
+            contentScrollView.bounces = anchorPosition == .maximized
         default:
             break
         }
@@ -174,7 +179,7 @@ extension AnchorView: UIGestureRecognizerDelegate {
 
 extension AnchorView {
     enum AnchorPosition: CGFloat {
-        case minimized = 0.40, maximized = 0.90, closed = 0
+        case minimized = 0.40, maximized = 0.93, closed = 0
     }
 }
 
