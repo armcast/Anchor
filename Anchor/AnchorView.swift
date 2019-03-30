@@ -102,5 +102,14 @@ extension AnchorView {
 
 extension AnchorView {
     @objc func handlePan(recognizer: UIPanGestureRecognizer) {
+    func animateToClosestAnchorPoint(for height: CGFloat) {
+        let distToMin = abs(AnchorPosition.minimized.rawValue * (parentView?.frame.height ?? 0) - height)
+        let distToMax = abs(AnchorPosition.maximized.rawValue * (parentView?.frame.height ?? 0) - height)
+        
+        if distToMin < distToMax {
+            animateTo(.minimized)
+        } else {
+            animateTo(.maximized)
+        }
     }
 }
