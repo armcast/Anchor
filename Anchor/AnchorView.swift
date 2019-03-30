@@ -71,6 +71,13 @@ extension AnchorView: UIGestureRecognizerDelegate {
         return true
     }
 }
+
+extension AnchorView {
+    enum AnchorPosition: CGFloat {
+        case minimized = 0.25, maximized = 0.90, closed = 0
+    }
+}
+
 extension AnchorView {
     @objc func handleOutsideTap() {
 extension AnchorView {
