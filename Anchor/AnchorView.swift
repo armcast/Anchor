@@ -7,8 +7,16 @@
 //
 
 import UIKit
+
 public class AnchorView: UIView {
     lazy var heightContraint = NSLayoutConstraint(item: contentView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 0.0)
+    private var contentViewIsAtTop: Bool {
+        return contentView.contentOffset.y <= 0
+    }
+    private var maxHeight: CGFloat {
+        return AnchorPosition.maximized.rawValue * (parentView?.frame.height ?? 0)
+    }
+    
     public var parentView: UIView?
     public var contentView = UIScrollView()
     private var anchorPosition: AnchorPosition = .closed
@@ -102,6 +110,35 @@ extension AnchorView {
 
 extension AnchorView {
     @objc func handlePan(recognizer: UIPanGestureRecognizer) {
+        let translation = recognizer.translation(in: contentView)
+        let newHeight = heightContraint.constant - translation.y
+        
+        switch recognizer.state {
+        case .began:
+            contentView.isScrollEnabled = anchorPosition != .minimized
+        case .changed:
+            // Swiping Up
+            if translation.y < 0 && anchorPosition == .minimized && newHeight <= maxHeight {
+                heightContraint.constant = newHeight
+            }
+            
+            // Swiping Down
+            if translation.y > 0 && anchorPosition == .maximized && !contentViewIsAtTop {
+                heightContraint.constant = newHeight
+            }
+            
+            recognizer.setTranslation(.zero, in: contentView)
+            
+        case .ended, .cancelled:
+            let velocityModifier = recognizer.velocity(in: contentView).y * 0.75
+            animateToClosestAnchorPoint(for: newHeight - velocityModifier)
+            
+            contentView.isScrollEnabled = anchorPosition != .minimized
+        default:
+            break
+        }
+    }
+    
     func animateToClosestAnchorPoint(for height: CGFloat) {
         let distToMin = abs(AnchorPosition.minimized.rawValue * (parentView?.frame.height ?? 0) - height)
         let distToMax = abs(AnchorPosition.maximized.rawValue * (parentView?.frame.height ?? 0) - height)
