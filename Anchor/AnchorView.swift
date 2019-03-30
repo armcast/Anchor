@@ -20,11 +20,17 @@ public class AnchorView: UIView {
         addGestureRecognizer(outsideTap)
         
         let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan(recognizer:)))
+        pan.delegate = self
         contentView.addGestureRecognizer(pan)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+extension AnchorView: UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }
 extension AnchorView {
