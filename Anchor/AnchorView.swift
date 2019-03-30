@@ -96,6 +96,10 @@ extension AnchorView {
 
 extension AnchorView {
     @objc func handleOutsideTap() {
+        close()
+    }
+}
+
 extension AnchorView {
     @objc func handlePan(recognizer: UIPanGestureRecognizer) {
     }
