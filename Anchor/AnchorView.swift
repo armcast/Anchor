@@ -8,13 +8,34 @@
 
 import UIKit
 public class AnchorView: UIView {
+    lazy var heightContraint = NSLayoutConstraint(item: contentView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 0.0)
     public var parentView: UIView?
     public var contentView = UIScrollView()
+    private func configureView() {
+        guard let parentView = self.parentView else { return }
+        
+        parentView.addSubview(self)
+        translatesAutoresizingMaskIntoConstraints = false
+        leadingAnchor.constraint(equalTo: parentView.leadingAnchor).isActive = true
+        trailingAnchor.constraint(equalTo: parentView.trailingAnchor).isActive = true
+        topAnchor.constraint(equalTo: parentView.topAnchor).isActive = true
+        bottomAnchor.constraint(equalTo: parentView.bottomAnchor).isActive = true
+        
+        addSubview(contentView)
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        heightContraint.isActive = true
+    }
+    
     public init(contentView: UIScrollView, parentView: UIView? = nil) {
         super.init(frame: .zero)
         
         self.contentView = contentView
         self.parentView = parentView ?? UIApplication.shared.keyWindow
+        
+        configureView()
         
         let outsideTap = UITapGestureRecognizer(target: self, action: #selector(handleOutsideTap))
         addGestureRecognizer(outsideTap)
@@ -28,6 +49,23 @@ public class AnchorView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+    private func configureView() {
+        guard let parentView = self.parentView else { return }
+        
+        parentView.addSubview(self)
+        translatesAutoresizingMaskIntoConstraints = false
+        leadingAnchor.constraint(equalTo: parentView.leadingAnchor).isActive = true
+        trailingAnchor.constraint(equalTo: parentView.trailingAnchor).isActive = true
+        topAnchor.constraint(equalTo: parentView.topAnchor).isActive = true
+        bottomAnchor.constraint(equalTo: parentView.bottomAnchor).isActive = true
+        
+        addSubview(contentView)
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        heightContraint.isActive = true
+    }
 extension AnchorView: UIGestureRecognizerDelegate {
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
