@@ -60,8 +60,6 @@ public class AnchorView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-    private func configureView() {
-        guard let parentView = self.parentView else { return }
 
 extension AnchorView {
     private func animateTo(_ position: AnchorPosition, completion: (() -> Void)? = nil) {
