@@ -22,7 +22,7 @@ public class AnchorView: UIView {
     public var contentView = UIScrollView()
     
     private var anchorPosition: AnchorPosition = .closed
-    public var animationSpeed: Double = 0.2
+    public var animationSpeed: Double = 0.4
     
     private func configureView() {
         guard let parentView = self.parentView else { return }
@@ -81,33 +81,32 @@ extension AnchorView {
 extension AnchorView {
     private func animateTo(_ position: AnchorPosition, animationSpeed: Double? = nil, completion: (() -> Void)? = nil) {
         anchorPosition = position
-        let animationSpeed = animationSpeed ?? self.animationSpeed
+        let animationSpeed: Double = animationSpeed ?? self.animationSpeed
         
         layoutIfNeeded()
         
         let height = (parentView?.frame.height ?? 0) * position.rawValue
         self.heightContraint.constant = height
-        UIView.animate(withDuration: animationSpeed, animations: {
+        
+        UIView.animate(withDuration: animationSpeed, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: [.allowUserInteraction], animations: {
             self.layoutIfNeeded()
         }, completion: { _ in
             completion?()
         })
     }
     
-    private func animateToClosestAnchorPoint(for height: CGFloat, animationSpeed: Double? = nil) {
-        let animationSpeed = animationSpeed ?? self.animationSpeed
-        
-        let distToMin = abs(AnchorPosition.minimized.rawValue * (parentView?.frame.height ?? 0) - height)
-        let distToMax = abs(AnchorPosition.maximized.rawValue * (parentView?.frame.height ?? 0) - height)
-        let distToClose = abs(AnchorPosition.closed.rawValue * (parentView?.frame.height ?? 0) - height)
+    private func animateToClosestAnchorPoint(for height: CGFloat, velocityMultiplier: Double) {
+        let distToMin: Double = Double(abs(AnchorPosition.minimized.rawValue * (parentView?.frame.height ?? 0) - height))
+        let distToMax: Double = Double(abs(AnchorPosition.maximized.rawValue * (parentView?.frame.height ?? 0) - height))
+        let distToClose: Double = Double(abs(AnchorPosition.closed.rawValue * (parentView?.frame.height ?? 0) - height))
         
         if distToMin < distToMax && distToMin < distToClose && startedAtTop {
-            animateTo(.minimized, animationSpeed: animationSpeed)
+            animateTo(.minimized, animationSpeed: velocityMultiplier / distToMin)
         } else if distToMax < distToMin && distToMax < distToClose {
-            animateTo(.maximized, animationSpeed: animationSpeed)
+            animateTo(.maximized, animationSpeed: velocityMultiplier / distToMax)
         } else if distToClose < distToMax && distToClose < distToMin && startedAtTop {
             if anchorPosition == .maximized {
-                animateTo(.minimized, animationSpeed: animationSpeed)
+                animateTo(.minimized, animationSpeed: velocityMultiplier / distToMin)
             } else {
                 close()
             }
@@ -141,12 +140,23 @@ extension AnchorView {
             
         case .ended, .cancelled:
             let velocity = recognizer.velocity(in: contentView)
-            let magnitude = sqrt((velocity.x * velocity.x) + (velocity.y * velocity.y))
-            let slideMultiplier = magnitude / 200
-            let velocityModifier = velocity.y * slideMultiplier * 0.1
+            // Range is between 2200 and 8000
+            let velocityY: CGFloat = {
+                if velocity.y > 0 {
+                    return max(2200, min(velocity.y * 2, 8000))
+                }
+                
+                if velocity.y < 0 {
+                    return min(-2200, max(velocity.y * 2, -8000))
+                }
+                
+                return 0
+            }()
+            let slideMultiplier = abs(velocityY) / 200
+            let velocityModifier = velocityY * slideMultiplier * 0.1
             
-            let animationDuration = Double(350) / Double(abs(velocity.y))
-            animateToClosestAnchorPoint(for: newHeight - velocityModifier, animationSpeed: animationDuration)
+            let velocityMultiplier = Double(abs(velocityY))
+            animateToClosestAnchorPoint(for: newHeight - velocityModifier, velocityMultiplier: velocityMultiplier)
             
             contentView.isScrollEnabled = anchorPosition != .minimized
             contentView.bounces = anchorPosition == .maximized
