@@ -69,6 +69,16 @@ extension AnchorView {
             completion?()
         })
     }
+    
+    public func open() {
+        animateTo(.minimized)
+    }
+    
+    public func close() {
+        animateTo(.closed) {
+            self.heightContraint.isActive = false
+            self.removeFromSuperview()
+        }
     }
 }
 
