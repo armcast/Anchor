@@ -18,10 +18,11 @@ public class AnchorView: UIView {
         return AnchorPosition.maximized.rawValue * (parentView?.frame.height ?? 0)
     }
     
+    private var title: String
     public var parentView: UIView?
     private var contentContainerView = AnchorContentContainerView()
     public var contentScrollView = UIScrollView()
-    private var headerBar = AnchorHeaderBar(title: "Longest Videos")
+    private var headerBar: AnchorHeaderBar
     
     private var anchorPosition: AnchorPosition = .closed
     public var animationSpeed: Double = 0.4
@@ -50,11 +51,14 @@ public class AnchorView: UIView {
         blurView.pin(to: contentContainerView, at: 0)
     }
     
-    public init(contentView: UIScrollView, parentView: UIView? = nil, style: UIBlurEffect.Style? = nil) {
-        super.init(frame: .zero)
-        
+    public init(title: String, contentView: UIScrollView, parentView: UIView? = nil, style: UIBlurEffect.Style? = nil) {
+        self.title = title
         self.contentScrollView = contentView
         self.parentView = parentView ?? UIApplication.shared.keyWindow
+        self.headerBar = AnchorHeaderBar(title: title)
+        
+        super.init(frame: .zero)
+        
         self.style = style ?? self.style
         
         configureView()

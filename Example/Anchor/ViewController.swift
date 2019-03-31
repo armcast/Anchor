@@ -36,7 +36,7 @@ class ViewController: UIViewController {
 
 extension ViewController {
     @objc func handleButtonPress() {
-        let anchorView = AnchorView(contentView: contentScrollView)
+        let anchorView = AnchorView(title: "Lorem Ipsum", contentView: contentScrollView)
         anchorView.open()
     }
 }
