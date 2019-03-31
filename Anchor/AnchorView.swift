@@ -25,6 +25,7 @@ public class AnchorView: UIView {
     
     private var anchorPosition: AnchorPosition = .closed
     public var animationSpeed: Double = 0.4
+    public var style: UIBlurEffect.Style = .dark
     
     private func configureView() {
         guard let parentView = self.parentView else { return }
@@ -45,15 +46,16 @@ public class AnchorView: UIView {
         contentContainerView.pin(to: self)
         contentContainerView.arrangedSubviews = [headerBar, contentScrollView]
         
-        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: style))
         blurView.pin(to: contentContainerView, at: 0)
     }
     
-    public init(contentView: UIScrollView, parentView: UIView? = nil) {
+    public init(contentView: UIScrollView, parentView: UIView? = nil, style: UIBlurEffect.Style? = nil) {
         super.init(frame: .zero)
         
         self.contentScrollView = contentView
         self.parentView = parentView ?? UIApplication.shared.keyWindow
+        self.style = style ?? self.style
         
         configureView()
         
