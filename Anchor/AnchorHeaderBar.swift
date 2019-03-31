@@ -9,7 +9,7 @@
 import UIKit
 
 class AnchorHeaderBar: UIView {
-    
+    public weak var delegate: AnchorHeaderBarDelegate?
     public var titleFontSize: CGFloat = 24
     public var closeViewSize: CGFloat = 26
     public var padding: CGFloat = 12
@@ -23,16 +23,18 @@ class AnchorHeaderBar: UIView {
         
         return label
     }()
-    private var closeView: UIImageView = {
-        let view = UIImageView()
+    private var closeView: UIButton = {
+        let button = UIButton()
         
         let bundle = Bundle(for: AnchorHeaderBar.self)
         let image = UIImage(named: "close-x-icon", in: bundle, compatibleWith: nil)
-        view.image = image
-        view.tintColor = .lightGray
-        view.contentMode = .scaleAspectFit
         
-        return view
+        button.setImage(image, for: .normal)
+        button.tintColor = .lightGray
+        button.showsTouchWhenHighlighted = true
+        button.addTarget(self, action: #selector(handleClosePress), for: .touchUpInside)
+        
+        return button
     }()
     
     private var dividerLine: UIView = {
@@ -77,4 +79,18 @@ class AnchorHeaderBar: UIView {
         
         closeView.height(closeViewSize).heightEqualsWidth()
     }
+}
+
+extension AnchorHeaderBar {
+    @objc func handleClosePress() {
+        delegate?.didPressClose()
+    }
+}
+
+protocol AnchorHeaderBarDelegate: class {
+    func didPressClose()
+}
+
+extension AnchorHeaderBarDelegate {
+    func didPressClose() {}
 }
