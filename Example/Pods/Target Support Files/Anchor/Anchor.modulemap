@@ -1,0 +1,6 @@
+framework module Anchor {
+  umbrella header "Anchor-umbrella.h"
+
+  export *
+  module * { export * }
+}

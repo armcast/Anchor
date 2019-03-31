@@ -1,0 +1,6 @@
+framework module Pods_Anchor_Tests {
+  umbrella header "Pods-Anchor_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

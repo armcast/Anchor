@@ -1,0 +1,16 @@
+PODS:
+  - Anchor (0.1.0)
+
+DEPENDENCIES:
+  - Anchor (from `../`)
+
+EXTERNAL SOURCES:
+  Anchor:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Anchor: 7ab2d2387e795a223d08459697347b8728c45639
+
+PODFILE CHECKSUM: 0236b453f73a67c977a9b64415ba79b598244fe0
+
+COCOAPODS: 1.5.0

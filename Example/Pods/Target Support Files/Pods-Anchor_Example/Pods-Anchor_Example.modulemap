@@ -1,0 +1,6 @@
+framework module Pods_Anchor_Example {
+  umbrella header "Pods-Anchor_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Anchor",
+  "version": "0.1.0",
+  "summary": "A short description of Anchor.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Armando Castaneda Elguero/Anchor",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Armando Castaneda Elguero": "armando.cas27@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Armando Castaneda Elguero/Anchor.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "Anchor/Classes/**/*"
+}
