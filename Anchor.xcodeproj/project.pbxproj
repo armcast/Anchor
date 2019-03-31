@@ -12,6 +12,29 @@
 		47087EB7224F82E1005AB914 /* Anchor.h in Headers */ = {isa = PBXBuildFile; fileRef = 47087EA9224F82E1005AB914 /* Anchor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		47087EC1224F8315005AB914 /* AnchorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47087EC0224F8315005AB914 /* AnchorView.swift */; };
 		472A8CA2224FEE08005BEB0C /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472A8CA1224FEE08005BEB0C /* UIView+Layout.swift */; };
+		472A8CA5225005E7005BEB0C /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472A8CA4225005E7005BEB0C /* ContainerView.swift */; };
+		472A8CA7225008E2005BEB0C /* AnchorHeaderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472A8CA6225008E2005BEB0C /* AnchorHeaderBar.swift */; };
+		47EE83332250194D004D31DB /* Stevia+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EE831E2250194D004D31DB /* Stevia+Style.swift */; };
+		47EE83342250194D004D31DB /* Stevia+DoubleDash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EE831F2250194D004D31DB /* Stevia+DoubleDash.swift */; };
+		47EE83352250194D004D31DB /* Stevia+GetConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EE83202250194D004D31DB /* Stevia+GetConstraint.swift */; };
+		47EE83362250194D004D31DB /* Stevia+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EE83212250194D004D31DB /* Stevia+Operators.swift */; };
+		47EE83372250194D004D31DB /* Stevia+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EE83222250194D004D31DB /* Stevia+Center.swift */; };
+		47EE83382250194D004D31DB /* Stevia+Fill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EE83232250194D004D31DB /* Stevia+Fill.swift */; };
+		47EE83392250194D004D31DB /* Stevia+Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EE83242250194D004D31DB /* Stevia+Position.swift */; };
+		47EE833A2250194D004D31DB /* Stevia+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EE83252250194D004D31DB /* Stevia+Notifications.swift */; };
+		47EE833B2250194D004D31DB /* Stevia+FlexibleMargin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EE83262250194D004D31DB /* Stevia+FlexibleMargin.swift */; };
+		47EE833C2250194D004D31DB /* Stevia+Baselines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EE83272250194D004D31DB /* Stevia+Baselines.swift */; };
+		47EE833D2250194D004D31DB /* Stevia+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EE83282250194D004D31DB /* Stevia+Hierarchy.swift */; };
+		47EE833E2250194D004D31DB /* Stevia+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EE83292250194D004D31DB /* Stevia+Constraints.swift */; };
+		47EE833F2250194D004D31DB /* Stevia.h in Headers */ = {isa = PBXBuildFile; fileRef = 47EE832A2250194D004D31DB /* Stevia.h */; };
+		47EE83402250194D004D31DB /* Stevia+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EE832B2250194D004D31DB /* Stevia+Size.swift */; };
+		47EE83412250194D004D31DB /* Stevia+Stacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EE832C2250194D004D31DB /* Stevia+Stacks.swift */; };
+		47EE83422250194D004D31DB /* Stevia+Percentage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EE832D2250194D004D31DB /* Stevia+Percentage.swift */; };
+		47EE83432250194D004D31DB /* Stevia+Equation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EE832E2250194D004D31DB /* Stevia+Equation.swift */; };
+		47EE83442250194D004D31DB /* Stevia+Alignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EE832F2250194D004D31DB /* Stevia+Alignment.swift */; };
+		47EE83452250194D004D31DB /* Stevia+LayoutAnchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EE83302250194D004D31DB /* Stevia+LayoutAnchors.swift */; };
+		47EE83472250194D004D31DB /* Stevia+Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EE83322250194D004D31DB /* Stevia+Content.swift */; };
+		47EE834922502804004D31DB /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47EE834822502804004D31DB /* Media.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +56,29 @@
 		47087EB6224F82E1005AB914 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47087EC0224F8315005AB914 /* AnchorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorView.swift; sourceTree = "<group>"; };
 		472A8CA1224FEE08005BEB0C /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
+		472A8CA4225005E7005BEB0C /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
+		472A8CA6225008E2005BEB0C /* AnchorHeaderBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorHeaderBar.swift; sourceTree = "<group>"; };
+		47EE831E2250194D004D31DB /* Stevia+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+Style.swift"; sourceTree = "<group>"; };
+		47EE831F2250194D004D31DB /* Stevia+DoubleDash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+DoubleDash.swift"; sourceTree = "<group>"; };
+		47EE83202250194D004D31DB /* Stevia+GetConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+GetConstraint.swift"; sourceTree = "<group>"; };
+		47EE83212250194D004D31DB /* Stevia+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+Operators.swift"; sourceTree = "<group>"; };
+		47EE83222250194D004D31DB /* Stevia+Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+Center.swift"; sourceTree = "<group>"; };
+		47EE83232250194D004D31DB /* Stevia+Fill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+Fill.swift"; sourceTree = "<group>"; };
+		47EE83242250194D004D31DB /* Stevia+Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+Position.swift"; sourceTree = "<group>"; };
+		47EE83252250194D004D31DB /* Stevia+Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+Notifications.swift"; sourceTree = "<group>"; };
+		47EE83262250194D004D31DB /* Stevia+FlexibleMargin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+FlexibleMargin.swift"; sourceTree = "<group>"; };
+		47EE83272250194D004D31DB /* Stevia+Baselines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+Baselines.swift"; sourceTree = "<group>"; };
+		47EE83282250194D004D31DB /* Stevia+Hierarchy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+Hierarchy.swift"; sourceTree = "<group>"; };
+		47EE83292250194D004D31DB /* Stevia+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+Constraints.swift"; sourceTree = "<group>"; };
+		47EE832A2250194D004D31DB /* Stevia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stevia.h; sourceTree = "<group>"; };
+		47EE832B2250194D004D31DB /* Stevia+Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+Size.swift"; sourceTree = "<group>"; };
+		47EE832C2250194D004D31DB /* Stevia+Stacks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+Stacks.swift"; sourceTree = "<group>"; };
+		47EE832D2250194D004D31DB /* Stevia+Percentage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+Percentage.swift"; sourceTree = "<group>"; };
+		47EE832E2250194D004D31DB /* Stevia+Equation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+Equation.swift"; sourceTree = "<group>"; };
+		47EE832F2250194D004D31DB /* Stevia+Alignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+Alignment.swift"; sourceTree = "<group>"; };
+		47EE83302250194D004D31DB /* Stevia+LayoutAnchors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+LayoutAnchors.swift"; sourceTree = "<group>"; };
+		47EE83322250194D004D31DB /* Stevia+Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+Content.swift"; sourceTree = "<group>"; };
+		47EE834822502804004D31DB /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +103,7 @@
 		47087E9C224F82E0005AB914 = {
 			isa = PBXGroup;
 			children = (
+				47EE831D2250194D004D31DB /* Stevia */,
 				47087EA8224F82E1005AB914 /* Anchor */,
 				47087EB3224F82E1005AB914 /* AnchorTests */,
 				47087EA7224F82E1005AB914 /* Products */,
@@ -79,6 +126,8 @@
 				47087EA9224F82E1005AB914 /* Anchor.h */,
 				47087EAA224F82E1005AB914 /* Info.plist */,
 				47087EC0224F8315005AB914 /* AnchorView.swift */,
+				472A8CA6225008E2005BEB0C /* AnchorHeaderBar.swift */,
+				47EE834822502804004D31DB /* Media.xcassets */,
 			);
 			path = Anchor;
 			sourceTree = "<group>";
@@ -96,8 +145,36 @@
 			isa = PBXGroup;
 			children = (
 				472A8CA1224FEE08005BEB0C /* UIView+Layout.swift */,
+				472A8CA4225005E7005BEB0C /* ContainerView.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		47EE831D2250194D004D31DB /* Stevia */ = {
+			isa = PBXGroup;
+			children = (
+				47EE831E2250194D004D31DB /* Stevia+Style.swift */,
+				47EE831F2250194D004D31DB /* Stevia+DoubleDash.swift */,
+				47EE83202250194D004D31DB /* Stevia+GetConstraint.swift */,
+				47EE83212250194D004D31DB /* Stevia+Operators.swift */,
+				47EE83222250194D004D31DB /* Stevia+Center.swift */,
+				47EE83232250194D004D31DB /* Stevia+Fill.swift */,
+				47EE83242250194D004D31DB /* Stevia+Position.swift */,
+				47EE83252250194D004D31DB /* Stevia+Notifications.swift */,
+				47EE83262250194D004D31DB /* Stevia+FlexibleMargin.swift */,
+				47EE83272250194D004D31DB /* Stevia+Baselines.swift */,
+				47EE83282250194D004D31DB /* Stevia+Hierarchy.swift */,
+				47EE83292250194D004D31DB /* Stevia+Constraints.swift */,
+				47EE832A2250194D004D31DB /* Stevia.h */,
+				47EE832B2250194D004D31DB /* Stevia+Size.swift */,
+				47EE832C2250194D004D31DB /* Stevia+Stacks.swift */,
+				47EE832D2250194D004D31DB /* Stevia+Percentage.swift */,
+				47EE832E2250194D004D31DB /* Stevia+Equation.swift */,
+				47EE832F2250194D004D31DB /* Stevia+Alignment.swift */,
+				47EE83302250194D004D31DB /* Stevia+LayoutAnchors.swift */,
+				47EE83322250194D004D31DB /* Stevia+Content.swift */,
+			);
+			path = Stevia;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -107,6 +184,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47EE833F2250194D004D31DB /* Stevia.h in Headers */,
 				47087EB7224F82E1005AB914 /* Anchor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -192,6 +270,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47EE834922502804004D31DB /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,8 +288,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47EE83372250194D004D31DB /* Stevia+Center.swift in Sources */,
 				472A8CA2224FEE08005BEB0C /* UIView+Layout.swift in Sources */,
+				47EE833E2250194D004D31DB /* Stevia+Constraints.swift in Sources */,
+				472A8CA7225008E2005BEB0C /* AnchorHeaderBar.swift in Sources */,
+				47EE833D2250194D004D31DB /* Stevia+Hierarchy.swift in Sources */,
+				47EE83432250194D004D31DB /* Stevia+Equation.swift in Sources */,
+				47EE83352250194D004D31DB /* Stevia+GetConstraint.swift in Sources */,
+				47EE83332250194D004D31DB /* Stevia+Style.swift in Sources */,
 				47087EC1224F8315005AB914 /* AnchorView.swift in Sources */,
+				47EE83422250194D004D31DB /* Stevia+Percentage.swift in Sources */,
+				47EE833C2250194D004D31DB /* Stevia+Baselines.swift in Sources */,
+				47EE83402250194D004D31DB /* Stevia+Size.swift in Sources */,
+				47EE83472250194D004D31DB /* Stevia+Content.swift in Sources */,
+				47EE83442250194D004D31DB /* Stevia+Alignment.swift in Sources */,
+				47EE83412250194D004D31DB /* Stevia+Stacks.swift in Sources */,
+				47EE83452250194D004D31DB /* Stevia+LayoutAnchors.swift in Sources */,
+				47EE83382250194D004D31DB /* Stevia+Fill.swift in Sources */,
+				47EE833B2250194D004D31DB /* Stevia+FlexibleMargin.swift in Sources */,
+				47EE83392250194D004D31DB /* Stevia+Position.swift in Sources */,
+				47EE83342250194D004D31DB /* Stevia+DoubleDash.swift in Sources */,
+				472A8CA5225005E7005BEB0C /* ContainerView.swift in Sources */,
+				47EE833A2250194D004D31DB /* Stevia+Notifications.swift in Sources */,
+				47EE83362250194D004D31DB /* Stevia+Operators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
