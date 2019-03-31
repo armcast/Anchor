@@ -19,8 +19,9 @@ public class AnchorView: UIView {
     }
     
     public var parentView: UIView?
-    private var contentContainerView = UIView()
+    private var contentContainerView = AnchorContentContainerView()
     public var contentScrollView = UIScrollView()
+    private var headerBar = AnchorHeaderBar()
     
     private var anchorPosition: AnchorPosition = .closed
     public var animationSpeed: Double = 0.4
@@ -42,7 +43,7 @@ public class AnchorView: UIView {
         contentContainerView.layer.borderWidth = 0.5
         
         contentContainerView.pin(to: self)
-        contentScrollView.pin(to: contentContainerView)
+        contentContainerView.arrangedSubviews = [headerBar, contentScrollView]
         
         let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
         blurView.pin(to: contentContainerView, at: 0)
@@ -62,7 +63,7 @@ public class AnchorView: UIView {
         
         let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan(recognizer:)))
         pan.delegate = self
-        contentView.addGestureRecognizer(pan)
+        contentContainerView.addGestureRecognizer(pan)
     }
     
     required init?(coder aDecoder: NSCoder) {
