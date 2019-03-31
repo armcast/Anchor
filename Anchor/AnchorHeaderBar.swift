@@ -17,7 +17,6 @@ class AnchorHeaderBar: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "Longest Videos"
         label.font = UIFont.boldSystemFont(ofSize: titleFontSize)
         label.textColor = .white
         label.numberOfLines = 0
@@ -46,8 +45,10 @@ class AnchorHeaderBar: UIView {
     
     private var container = UIView()
     
-    convenience init() {
+    convenience init(title: String) {
         self.init(frame: .zero)
+        
+        titleLabel.text = title
         
         clipsToBounds = true
         

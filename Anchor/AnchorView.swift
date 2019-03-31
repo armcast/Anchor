@@ -21,7 +21,7 @@ public class AnchorView: UIView {
     public var parentView: UIView?
     private var contentContainerView = AnchorContentContainerView()
     public var contentScrollView = UIScrollView()
-    private var headerBar = AnchorHeaderBar()
+    private var headerBar = AnchorHeaderBar(title: "Longest Videos")
     
     private var anchorPosition: AnchorPosition = .closed
     public var animationSpeed: Double = 0.4
