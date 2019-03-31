@@ -11,7 +11,7 @@ import UIKit
 class AnchorHeaderBar: UIView {
     
     public var titleFontSize: CGFloat = 24
-    public var closeViewSize: CGFloat = 16
+    public var closeViewSize: CGFloat = 26
     public var padding: CGFloat = 12
     
     private lazy var titleLabel: UILabel = {
