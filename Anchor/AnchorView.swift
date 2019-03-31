@@ -64,6 +64,8 @@ public class AnchorView: UIView {
         let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan(recognizer:)))
         pan.delegate = self
         contentContainerView.addGestureRecognizer(pan)
+        
+        headerBar.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -169,6 +171,12 @@ extension AnchorView {
         default:
             break
         }
+    }
+}
+
+extension AnchorView: AnchorHeaderBarDelegate {
+    func didPressClose() {
+        close()
     }
 }
 
