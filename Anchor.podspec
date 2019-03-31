@@ -17,10 +17,8 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       This library mimics the functionality of Apple Maps Cards. Each card is anchored to minimized maximized
-                       positions that the user can swipe between. The view contains a scrollView to display content.
+  s.description      = 'This library mimics the functionality of Apple Maps Cards. Each card is anchored to minimized maximized
+                       positions that the user can swipe between. The view contains a scrollView to display content.'
 
   s.homepage         = 'https://github.com/armcast/Anchor'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'

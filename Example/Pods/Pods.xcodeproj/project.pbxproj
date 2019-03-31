@@ -70,8 +70,8 @@
 		38F75A428333E99C5CE40C24339EAE82 /* Pods-Anchor_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Anchor_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		433F1CD4B3F4B9FBB2FEF058E1284812 /* Pods-Anchor_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Anchor_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		46951FBD74F198415BE77F2806568021 /* Pods-Anchor_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Anchor_Example-umbrella.h"; sourceTree = "<group>"; };
-		47FE331E22507A1D000C386A /* AnchorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnchorView.swift; sourceTree = "<group>"; };
-		47FE331F22507A1D000C386A /* AnchorHeaderBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnchorHeaderBar.swift; sourceTree = "<group>"; };
+		47FE331E22507A1D000C386A /* AnchorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnchorView.swift; path = Anchor/Classes/AnchorView.swift; sourceTree = "<group>"; };
+		47FE331F22507A1D000C386A /* AnchorHeaderBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnchorHeaderBar.swift; path = Anchor/Classes/AnchorHeaderBar.swift; sourceTree = "<group>"; };
 		47FE332322507A32000C386A /* Stevia+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+Style.swift"; sourceTree = "<group>"; };
 		47FE332422507A32000C386A /* Stevia+DoubleDash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+DoubleDash.swift"; sourceTree = "<group>"; };
 		47FE332522507A32000C386A /* Stevia+GetConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+GetConstraint.swift"; sourceTree = "<group>"; };
@@ -92,9 +92,9 @@
 		47FE333422507A32000C386A /* Stevia+Alignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+Alignment.swift"; sourceTree = "<group>"; };
 		47FE333522507A32000C386A /* Stevia+LayoutAnchors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+LayoutAnchors.swift"; sourceTree = "<group>"; };
 		47FE333622507A32000C386A /* Stevia+Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+Content.swift"; sourceTree = "<group>"; };
-		47FE334D22507ABC000C386A /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
-		47FE334E22507ABC000C386A /* AnchorContentContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnchorContentContainerView.swift; sourceTree = "<group>"; };
-		47FE335122507E6B000C386A /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		47FE334D22507ABC000C386A /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Layout.swift"; path = "Anchor/Classes/UIView+Layout.swift"; sourceTree = "<group>"; };
+		47FE334E22507ABC000C386A /* AnchorContentContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnchorContentContainerView.swift; path = Anchor/Classes/AnchorContentContainerView.swift; sourceTree = "<group>"; };
+		47FE335122507E6B000C386A /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = Anchor/Assets/Media.xcassets; sourceTree = "<group>"; };
 		4B14BA4E61D6436BC5705CC333C7AF04 /* Anchor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Anchor.modulemap; sourceTree = "<group>"; };
 		4D55696462C27BBCD1F0F88D638A2B31 /* Pods_Anchor_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Anchor_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55006532ECFC3A35DD4495FF68ECFDE3 /* Pods-Anchor_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Anchor_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -197,15 +197,8 @@
 				47FE333522507A32000C386A /* Stevia+LayoutAnchors.swift */,
 				47FE333622507A32000C386A /* Stevia+Content.swift */,
 			);
-			path = Stevia;
-			sourceTree = "<group>";
-		};
-		47FE334C22507ABC000C386A /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				47FE334D22507ABC000C386A /* UIView+Layout.swift */,
-			);
-			path = Extensions;
+			name = Stevia;
+			path = ../../Anchor/Classes/Stevia;
 			sourceTree = "<group>";
 		};
 		5C2FF661D6D2A1207BE40DCBB8C18CFE /* Pods-Anchor_Example */ = {
@@ -288,10 +281,10 @@
 			isa = PBXGroup;
 			children = (
 				47FE335122507E6B000C386A /* Media.xcassets */,
-				47FE334C22507ABC000C386A /* Extensions */,
 				47FE331F22507A1D000C386A /* AnchorHeaderBar.swift */,
 				47FE331E22507A1D000C386A /* AnchorView.swift */,
 				47FE334E22507ABC000C386A /* AnchorContentContainerView.swift */,
+				47FE334D22507ABC000C386A /* UIView+Layout.swift */,
 				6F2B0D19AAE4830AD429005A6809B1F5 /* Pod */,
 				3A11F6D8D211E49437CA595CE4A55EF0 /* Support Files */,
 			);
