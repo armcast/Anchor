@@ -93,6 +93,7 @@
 		47FE333622507A32000C386A /* Stevia+Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stevia+Content.swift"; sourceTree = "<group>"; };
 		47FE334D22507ABC000C386A /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		47FE334E22507ABC000C386A /* AnchorContentContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnchorContentContainerView.swift; sourceTree = "<group>"; };
+		47FE335122507E6B000C386A /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		4B14BA4E61D6436BC5705CC333C7AF04 /* Anchor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Anchor.modulemap; sourceTree = "<group>"; };
 		4D55696462C27BBCD1F0F88D638A2B31 /* Pods_Anchor_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Anchor_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55006532ECFC3A35DD4495FF68ECFDE3 /* Pods-Anchor_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Anchor_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -285,6 +286,7 @@
 		A5D196AE69B58B650394A6FE813F85E6 /* Anchor */ = {
 			isa = PBXGroup;
 			children = (
+				47FE335122507E6B000C386A /* Media.xcassets */,
 				47FE334C22507ABC000C386A /* Extensions */,
 				47FE331F22507A1D000C386A /* AnchorHeaderBar.swift */,
 				47FE331E22507A1D000C386A /* AnchorView.swift */,
