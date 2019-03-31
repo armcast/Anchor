@@ -10,6 +10,7 @@
 		03E473A6E4D64BBF0F4260BF29F359AC /* Pods-Anchor_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1700C035A7EEC99BA33A68760471E9BE /* Pods-Anchor_Example-dummy.m */; };
 		1ECDAA66AA2F5050782AAC615212468B /* Anchor-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 93B2CD0200F178F3B0B00E4EA6EA5FA9 /* Anchor-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3BC1F102DD8EF26D30D51569A7A01295 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		47784D0F22508F5200A9BF2D /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47FE335122507E6B000C386A /* Media.xcassets */; };
 		47FE332022507A1D000C386A /* AnchorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE331E22507A1D000C386A /* AnchorView.swift */; };
 		47FE332122507A1D000C386A /* AnchorHeaderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE331F22507A1D000C386A /* AnchorHeaderBar.swift */; };
 		47FE333722507A32000C386A /* Stevia+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE332322507A32000C386A /* Stevia+Style.swift */; };
@@ -352,6 +353,7 @@
 				F99BF5906E59110A01E4742E066F9DD9 /* Sources */,
 				B5BABDC3902551A5CAD77C41D4209FE0 /* Frameworks */,
 				466991924940C52A3F8921A56D8E2083 /* Headers */,
+				47784D0B22508DF700A9BF2D /* Resources */,
 			);
 			buildRules = (
 			);
@@ -431,6 +433,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		47784D0B22508DF700A9BF2D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				47784D0F22508F5200A9BF2D /* Media.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6080F8963F77F529451F1BB2147BE7E2 /* Sources */ = {
@@ -620,7 +633,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -713,7 +726,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
