@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Anchor'
-  s.version          = '1.0.0'
+  s.version          = '0.1'
   s.summary          = 'Anchor provides gesture controlled expandable views that house scrollable content. This is similiar to the cards in Apple Maps.'
 
 # This description is used to generate tags and improve search results.
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Armando Castaneda Elguero' => 'armando.cas27@gmail.com' }
-  s.source           = { :git => 'https://github.com/Armando Castaneda Elguero/Anchor.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/armcast/Anchor.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '11.0'
 
