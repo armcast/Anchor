@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/cocoapods/l/Anchor.svg?style=flat)](https://cocoapods.org/pods/Anchor)
 [![Platform](https://img.shields.io/cocoapods/p/Anchor.svg?style=flat)](https://cocoapods.org/pods/Anchor)
 
-![](anchor.gif)
+<img src="anchor.gif" alt="anchor example gif" width="308" height="671" />
 
 ## Usage
 
