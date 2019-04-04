@@ -29,6 +29,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '11.0'
 
   s.source_files = 'Anchor/Classes/**/*'
+  s.swift_version = '5'
   
   # s.resource_bundles = {
   #   'Anchor' => ['Anchor/Assets/*.png']
